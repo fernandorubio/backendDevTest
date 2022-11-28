@@ -8,9 +8,7 @@ import com.frb.test.model.Product;
 import com.frb.test.util.Constants;
 import com.frb.test.util.HttpClientUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,9 +21,6 @@ import java.util.List;
 @Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
-
-	@Autowired
-	public Environment environment;
 
 	@Override
 	@Cacheable("products")
@@ -65,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
 		HttpResponse<String> httpResponse;
 		try {
 			httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-		} catch (IOException | InterruptedException e) {;
+		} catch (IOException | InterruptedException e) {
 			throw new ServiceException(ServiceError.ERROR_RETRIEVING_PRODUCT);
 		}
 
