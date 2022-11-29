@@ -26,7 +26,7 @@ public class ProductApiController {
 	private ProductService productService;
 
 
-	@Operation(summary = "Similar products", description = "Search similar products", tags = {})
+	@Operation(summary = "Similar products", description = "Search similar products", tags = {"Product"})
 	@ApiResponses({
 			@ApiResponse(responseCode = Errors.PRODUCT_NOT_FOUND, description = Errors.PRODUCT_NOT_FOUND_MSG),
 			@ApiResponse(responseCode = Errors.ERROR_RETRIEVING_PRODUCT, description = Errors.ERROR_RETRIEVING_PRODUCT_MSG),
@@ -34,7 +34,7 @@ public class ProductApiController {
 	})
 	@GetMapping(value = "/product/{productId}/similar")
 	public ResponseEntity<List<Product>> getProductSimilar(@PathVariable Integer productId) {
-		log.info("Get product ID {}", productId);
+		log.debug("Get product ID {}", productId);
 		List<Product> productList = null;
 		try {
 			productList = productService.getProductSimilar(productId);
