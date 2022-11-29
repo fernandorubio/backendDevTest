@@ -1,5 +1,6 @@
 package com.frb.test.model;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import java.math.BigDecimal;
 
 
 @Data
-@NoArgsConstructor
+@Builder
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 53167480569830874L;
@@ -17,4 +18,5 @@ public class Product implements Serializable {
 	private String name;
 	private BigDecimal price;
 	private Boolean availability;
+
 }
